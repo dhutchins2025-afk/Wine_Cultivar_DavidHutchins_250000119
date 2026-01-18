@@ -12,11 +12,15 @@ model = joblib.load(MODEL_PATH)
 scaler = joblib.load(SCALER_PATH)
 
 # Home route
+
+
 @app.route("/", methods=["GET"])
 def home():
     return render_template("index.html")
 
 # Prediction route
+
+
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
@@ -31,10 +35,11 @@ def predict():
         proanthocyanins = float(request.form["proanthocyanins"])
         color_intensity = float(request.form["color_intensity"])
         hue = float(request.form["hue"])
-        od280_od315_of_diluted_wines = float(request.form["od280_od315_of_diluted_wines"])
+        od280_od315_of_diluted_wines = float(
+            request.form["od280_od315_of_diluted_wines"])
         proline = float(request.form["proline"])
 
-        features = np.array([[ 
+        features = np.array([[
             alcohol, malic_acid, ash, alcalinity_of_ash, magnesium,
             total_phenols, flavanoids, nonflavanoid_phenols,
             proanthocyanins, color_intensity, hue,
@@ -50,6 +55,9 @@ def predict():
     except:
         return render_template("index.html", error="Prediction failed. Check inputs.")
 
+
 # Run app
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=False)
+    import os
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
