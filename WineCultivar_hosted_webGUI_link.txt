@@ -1,0 +1,11 @@
+Name: David Hutchins
+
+Matric Number: 250000119
+
+Machine Learning Algorithm Used: Logistic Regression (Scikit-learn)
+
+Model Persistence Method Used: Joblib
+
+Live URL of the Hosted Application:
+
+GitHub Repository Link: https://github.com/dhutchins2025-afk/Wine_Cultivar_DavidHutchins_250000119
