@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wine Classifier</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Wine Classifier</h1>
+        <form method="post" action="/predict">
+            <div class="grid">
+                <input type="number" step="any" name="alcohol" placeholder="Alcohol" required>
+                <input type="number" step="any" name="malic_acid" placeholder="Malic Acid" required>
+                <input type="number" step="any" name="ash" placeholder="Ash" required>
+                <input type="number" step="any" name="alcalinity_of_ash" placeholder="Alcalinity of Ash" required>
+                <input type="number" step="any" name="magnesium" placeholder="Magnesium" required>
+                <input type="number" step="any" name="total_phenols" placeholder="Total Phenols" required>
+                <input type="number" step="any" name="flavanoids" placeholder="Flavanoids" required>
+                <input type="number" step="any" name="nonflavanoid_phenols" placeholder="Nonflavanoid Phenols" required>
+                <input type="number" step="any" name="proanthocyanins" placeholder="Proanthocyanins" required>
+                <input type="number" step="any" name="color_intensity" placeholder="Color Intensity" required>
+                <input type="number" step="any" name="hue" placeholder="Hue" required>
+                <input type="number" step="any" name="od280_od315_of_diluted_wines" placeholder="OD280/OD315" required>
+                <input type="number" step="any" name="proline" placeholder="Proline" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction is defined %}
+            <div class="result">Predicted Class: {{ prediction }}</div>
+        {% endif %}
+        {% if error is defined %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
